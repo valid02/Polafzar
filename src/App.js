@@ -1,7 +1,9 @@
+import NewExpense from "./components/NewExpense/NewExpense";
+
 const App = () => {
   return (
     <div>
-      <h1>hello world</h1>
+      <NewExpense />
     </div>
   );
 }
