@@ -1,8 +1,47 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+@font-face {
+  font-family: "vazir";
+  src: url("./font/Vazir.eot") format("eot"),
+       url("./font/Vazir.woff") format("woff"),
+       url("./font/Vazir.ttf") format("truetype");
 }
 
 * {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  font-family: vazir ,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* background: rgb(70, 75, 113);
+  background: linear-gradient(90deg, rgba(70, 75, 113, 1) 0%, rgba(98, 102, 139, 1) 100%); */
+  background-color: #fff;
+  color: #141627;
+  direction: rtl;
+}
+
+/* .colors {
+  #765CDE
+  #141627
+  #1C1F36
+  #E45499
+  #AF59FB
+  #0F1120
+  #575A80
+  #464B71
+  #272A43
+  #6F7394
+  #D3D6EA
+  #E1E6CB
+  #3895C9
+  #422A99
+  #846DD5
+  #A959E8
+  #6776FF
+  #755BDC
+  #FE8960
+  #6865FF
+  #503696
+  #503695
+  #53379F
+  #3B3270
+} */
