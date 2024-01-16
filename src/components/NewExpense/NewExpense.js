@@ -1,4 +1,9 @@
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 import classes from "./NewExpense.module.css";
+
+const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
 
 const NewExpense = () => {
   return (
@@ -15,7 +20,20 @@ const NewExpense = () => {
           </div>
           <div className={classes['new-expense__control']}>
             <label htmlFor="date">تاریخ</label>
-            <input type="date" id="date" />
+            <DatePicker
+              containerStyle={{
+                width: '100%',
+              }}
+              editable={false}
+              inputClass={classes['new-expense__input']}
+              // className={props.checkedToggle ? 'bg-dark' : ''}
+              weekDays={weekDays}
+              calendar={persian}
+              locale={persian_fa}
+              calendarPosition="bottom-right"
+              // onChange={setEnteredDate}
+              // value={enteredDate}
+            />
           </div>
           <div className={classes['new-expense__control']}>
             <label htmlFor="description">توضیحات</label>
