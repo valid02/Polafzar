@@ -21,8 +21,7 @@
   margin-bottom: 0.5rem;
   display: block;
 }
-
-.new-expense__control input , 
+ 
 .new-expense__input {
   font: inherit;
   padding: 0.5rem;
@@ -44,6 +43,27 @@
 
 .new-expense__actions {
   text-align: right;
+}
+
+.new-expense__btn {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  background-color: #739ba5;
+  border: 1px solid #739ba5;
+  border-radius: 12px;
+  margin-bottom: 4rem;
+}
+
+.new-expense__btn:hover,
+.new-expense__btn:active {
+  background-color: #478291;
+  border-color: #478291;
+}
+
+.new-expense__icon {
+  margin-left: .5rem;
+  /* color: #313042; */
 }
 
 .new-expense__button {
