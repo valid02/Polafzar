@@ -53,7 +53,7 @@ const NewExpense = () => {
             <FontAwesomeIcon icon={faBars} className={classes['new-expense__icon']} />
               انتخاب دسته بندی
             </button>
-            { isModalOpen && <CategorySelector closeModal={closeModal} />}
+            {isModalOpen && <CategorySelector closeModal={closeModal} />}
           </div>
         </div>
         <div className={classes['new-expense__actions']}>
