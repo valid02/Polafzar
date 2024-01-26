@@ -1,0 +1,11 @@
+.category-item {
+  margin: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #a7b8b8;
+  border-radius: 5px;
+}
+
+.category-item:hover {
+  background-color: #7f8b8b;
+}
