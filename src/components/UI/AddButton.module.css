@@ -1,0 +1,18 @@
+.add-button {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  font: inherit;
+  cursor: pointer;
+  background-color: #d1d1d1;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.add-button:hover {
+  background-color: #b9b9b9;
+}
+
+.add-button__icon {
+  margin-left: 0.5rem;
+}
