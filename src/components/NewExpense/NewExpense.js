@@ -2,7 +2,7 @@ import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import classes from "./NewExpense.module.css";
-import CategorySelector from "../Category/CategorySelector";
+import CategorySelectorModal from "../Category/CategorySelectorModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
@@ -53,7 +53,7 @@ const NewExpense = () => {
             <FontAwesomeIcon icon={faBars} className={classes['new-expense__icon']} />
               انتخاب دسته بندی
             </button>
-            {isModalOpen && <CategorySelector closeModal={closeModal} />}
+            {isModalOpen && <CategorySelectorModal closeModal={closeModal} />}
           </div>
         </div>
         <div className={classes['new-expense__actions']}>

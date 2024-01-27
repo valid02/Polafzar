@@ -1,35 +1,10 @@
-.backdrop {
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 310px;
-  height: 460px;
-  max-width: 90%;
-  background-color: #f3f3f3;
-  border-radius: 6px;
-  box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.45);
-  overflow: hidden;
-}
-
-.modal__categories {
+.category-selector {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
 }
 
-.modal__header {
+.category-selector__header {
   background-color: #f3f3f3;
   padding: 0.5rem;
   margin: 0;
@@ -37,7 +12,7 @@
   align-items: center;
 }
 
-.modal__title {
+.category-selector__title {
   font-size: 1rem;
   padding: 0;
   margin: 0;
@@ -46,91 +21,11 @@
   text-align: center;
 }
 
-.modal__close-btn {
-  cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 1rem;
-  border: none;
-}
-
-.modal__close-btn:hover {
-  background-color: #b9b9b9;
-  border-radius: 5px;
-}
-
-.modal__content {
+.category-selector__content {
   padding: 0.8rem;
 }
 
-.modal__input {
-  font: inherit;
-  padding: 0.4rem;
-  border-radius: 2px;
-  border: 2px solid #b6b6b6;
-  width: 100%;
-}
-
-.modal__input:focus {
-  outline: none;
-  border: 2px solid #1b8dda;
-}
-
-.modal__lable {
+.category-selector__lable {
   margin: 1rem 0;
   font-size: 14px;
 }
-
-.modal__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.modal__list li {
-  margin: 1rem;
-  padding: 0.5rem;
-  cursor: pointer;
-  background-color: #a7b8b8;
-  border-radius: 5px;
-}
-
-.modal__list li:hover {
-  background-color: #7f8b8b;
-}
-
-.modal__add-category-btn {
-  margin: 1rem 0;
-  padding: 0.5rem;
-  font: inherit;
-  cursor: pointer;
-  background-color: #d1d1d1;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.modal__add-category-btn:hover {
-  background-color: #b9b9b9;
-}
-
-.modal__add-category-icon {
-  margin-left: 0.5rem;
-}
-
-.modal__control {
-  margin-top: 1rem;
-}
-
-.modal__control label {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-.modal__control input {
-  margin-top: 1rem;
-}
-
