@@ -26,10 +26,11 @@ const AddCategory = ({ goBackHandler , newCategoryHandler, closeModal  }) => {
         <form onSubmit={addCategoryHandler}>
           <div className={classes['add-category__control']}>
             <label>نام دسته بندی</label>
-            <input type="text" onChange={e => setEnteredCategory(e.target.value)} />
+            <input type="text" onChange={e => setEnteredCategory(e.target.value)} maxLength={20} />
+            <span>{enteredCategory.length}/20</span>
           </div>
           <div className={classes['add-category__control']}>
-            <AddButton onClick={addCategoryHandler} text="افزودن" />
+            <AddButton onClick={addCategoryHandler} text="افزودن" disabled={!enteredCategory} />
           </div>
         </form>
       </div>
