@@ -12,7 +12,7 @@ const AddCategory = ({ goBackHandler , newCategoryHandler, closeModal  }) => {
 
   const addCategoryHandler = event => {
     event.preventDefault();
-    newCategoryHandler(enteredCategory);
+    newCategoryHandler(enteredCategory.trim());
   }
 
   return (
