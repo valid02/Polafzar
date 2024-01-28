@@ -6,7 +6,7 @@ import CategorySearch from './CategorySearch';
 import CategoryList from './CategoryList';
 import AddButton from '../UI/AddButton';
 
-const CategorySelector = ({ categories, isAddingCategory, closeModal }) => {
+const CategorySelector = ({ categories, isAddingCategory, closeModal, editbtnClicked }) => {
   const [searchedCategories, setSearchedCategories] = useState(categories);
 
   const handleSearch = searchTerm => {
@@ -20,6 +20,10 @@ const CategorySelector = ({ categories, isAddingCategory, closeModal }) => {
     isAddingCategory(true);
   }
 
+  const editBtnHandler = (title) => {
+    editbtnClicked(title);
+  }
+
   return (
     <div className={classes['category-selector']}>
       <header className={classes['category-selector__header']}>
@@ -29,7 +33,7 @@ const CategorySelector = ({ categories, isAddingCategory, closeModal }) => {
       <div className={classes['category-selector__content']}>
         <CategorySearch onSearch={handleSearch} />
         <p className={classes['category-selector__lable']}>دسته بندی ها</p>
-        <CategoryList categories={searchedCategories} />
+        <CategoryList categories={searchedCategories} editbtnClicked={editBtnHandler} />
         <AddButton onClick={isAddingCategoryHandler} text="افزودن دسته بندی دلخواه" />
       </div>
     </div>

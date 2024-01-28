@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import CategorySelector from './CategorySelector';
 import AddCategory from './AddCategory';
+import EditCategory from './EditCategory';
 
 let categories = [
   { title:'خوراکی و مواد غذایی', icon: faBowlFood, isEditable: false},
@@ -36,11 +37,14 @@ const Backdrop = props => {
 
 const ModalOverlay = props => {
   const [isAddingCategory, setIsAddingCategory] = useState(false);
+  const [isEditCategory, setIsEditCategory] = useState(false);
+  const [editCategoryIndex, setEditCategoryIndex] = useState(null);
+
+  const isDuplicateCategory = (categories, newCategoryTitle) => {
+    return categories.some(category => (category.isEditable && category.title === newCategoryTitle));
+  }
 
   const addNewCategoryHandler = (newCategoryValue) => {
-    const isDuplicateCategory = (categories, newCategoryTitle) => {
-      return categories.some(category => (category.isEditable && category.title === newCategoryTitle));
-    }
 
     if (newCategoryValue.length > 0) {
       if (isDuplicateCategory(categories, newCategoryValue)) {
@@ -56,13 +60,33 @@ const ModalOverlay = props => {
     }
   }
 
+  const handleEditCategory = (categoryTitle) => {
+    if (isDuplicateCategory(categories, categoryTitle)) {
+      alert('دسته بندی تکراری');
+    }
+    else {
+      categories[editCategoryIndex].title = categoryTitle;
+      setIsEditCategory(prevState => !prevState);
+    }
+  }
+
+  const editBtnHandler = (title) => {
+    setIsEditCategory(prevState => !prevState);
+    categories.forEach((category, index) => {
+      if (category.isEditable && category.title === title) {
+        setEditCategoryIndex(index);
+      }
+    });
+  }
+
   return (
     <div className={classes.modal}>
-      {!isAddingCategory && (
+      {!isAddingCategory && !isEditCategory && (
         <CategorySelector
           closeModal={props.closeModal}
           isAddingCategory={setIsAddingCategory}
           categories={categories}
+          editbtnClicked={editBtnHandler}
         />
       )}
       {isAddingCategory && (
@@ -70,6 +94,14 @@ const ModalOverlay = props => {
           closeModal={props.closeModal}
           goBackHandler={() => setIsAddingCategory(prevState => !prevState)}
           newCategoryHandler={addNewCategoryHandler}
+        />
+      )}
+      {isEditCategory && (
+        <EditCategory
+          closeModal={props.closeModal}
+          goBackHandler={() => setIsEditCategory(prevState => !prevState)}
+          categories={categories}
+          editedCategory={handleEditCategory}
         />
       )}
     </div>
