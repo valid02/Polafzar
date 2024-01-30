@@ -2,14 +2,14 @@ import CategoryItem from './CategoryItem';
 import classes from './CategoryList.module.css';
 
 const CategoryList = ({ categories, editbtnClicked }) => {
-  const editBtnHamdler = (title) => {
-    editbtnClicked(title);
+  const editBtnHamdler = (index) => {
+    editbtnClicked(index);
   }
 
   return (
     <ul className={classes['category-list']}>
       {categories.map((category, index) => (
-        <CategoryItem key={index} {...category} editbtnClicked={editBtnHamdler} />
+        <CategoryItem key={index} {...category} index={index} editbtnClicked={editBtnHamdler} />
       ))}
     </ul>
   );

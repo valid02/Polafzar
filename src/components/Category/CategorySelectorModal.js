@@ -40,14 +40,25 @@ const ModalOverlay = props => {
   const [isEditCategory, setIsEditCategory] = useState(false);
   const [editCategoryIndex, setEditCategoryIndex] = useState(null);
 
-  const isDuplicateCategory = (categories, newCategoryTitle) => {
-    return categories.some(category => (category.isEditable && category.title === newCategoryTitle));
-  }
+  const findDuplicateCategory = (categories, newCategoryTitle) => {
+    let index = -1;
+    let isDuplicate = false;
+  
+    categories.forEach((category, i) => {
+      if (category.isEditable && category.title === newCategoryTitle) {
+        isDuplicate = true;
+        index = i;
+      }
+    });
+  
+    return { isDuplicate, index };
+  };
+  
 
   const addNewCategoryHandler = (newCategoryValue) => {
 
     if (newCategoryValue.length > 0) {
-      if (isDuplicateCategory(categories, newCategoryValue)) {
+      if (findDuplicateCategory(categories, newCategoryValue).isDuplicate) {
         alert('دسته بندی تکراری');
       }
       else {
@@ -61,22 +72,25 @@ const ModalOverlay = props => {
   }
 
   const handleEditCategory = (categoryTitle) => {
-    if (isDuplicateCategory(categories, categoryTitle)) {
-      alert('دسته بندی تکراری');
-    }
-    else {
-      categories[editCategoryIndex].title = categoryTitle;
-      setIsEditCategory(prevState => !prevState);
+    const { isDuplicate, index } = findDuplicateCategory(categories, categoryTitle);
+    
+    if (categoryTitle.length > 0) {
+      if (isDuplicate && index === editCategoryIndex) {
+        setIsEditCategory(prevState => !prevState);
+      }
+      else if (isDuplicate) {
+        alert('دسته بندی تکراری');
+      }
+      else {
+        categories[editCategoryIndex].title = categoryTitle;
+        setIsEditCategory(prevState => !prevState);
+      }
     }
   }
 
-  const editBtnHandler = (title) => {
+  const editBtnHandler = (index) => {
     setIsEditCategory(prevState => !prevState);
-    categories.forEach((category, index) => {
-      if (category.isEditable && category.title === title) {
-        setEditCategoryIndex(index);
-      }
-    });
+    setEditCategoryIndex(index);
   }
 
   return (

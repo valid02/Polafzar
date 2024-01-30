@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './CategoryItem.module.css';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
-const CategoryItem = ({ icon, title, isEditable, editbtnClicked }) => {
+const CategoryItem = ({ icon, title, index, isEditable, editbtnClicked }) => {
   const editbtnHandler = () => {
-    editbtnClicked(title);
+    editbtnClicked(index);
   }
 
   return (

@@ -20,8 +20,8 @@ const CategorySelector = ({ categories, isAddingCategory, closeModal, editbtnCli
     isAddingCategory(true);
   }
 
-  const editBtnHandler = (title) => {
-    editbtnClicked(title);
+  const editBtnHandler = (index) => {
+    editbtnClicked(index);
   }
 
   return (
