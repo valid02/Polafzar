@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import CategorySelector from './CategorySelector';
 import AddCategory from './AddCategory';
 import EditCategory from './EditCategory';
+import DeleteConfirmation from './DeleteConfirmation';
 
 let categories = [
   { title:'خوراکی و مواد غذایی', icon: faBowlFood, isEditable: false},
@@ -38,6 +39,7 @@ const Backdrop = props => {
 const ModalOverlay = props => {
   const [isAddingCategory, setIsAddingCategory] = useState(false);
   const [isEditCategory, setIsEditCategory] = useState(false);
+  const [isDeleteCategory, setIsDeleteCategory] = useState(false);
   const [editCategoryIndex, setEditCategoryIndex] = useState(null);
 
   const findDuplicateCategory = (categories, newCategoryTitle) => {
@@ -77,6 +79,7 @@ const ModalOverlay = props => {
     if (categoryTitle.length > 0) {
       if (isDuplicate && index === editCategoryIndex) {
         setIsEditCategory(prevState => !prevState);
+        setEditCategoryIndex(null);
       }
       else if (isDuplicate) {
         alert('دسته بندی تکراری');
@@ -84,6 +87,7 @@ const ModalOverlay = props => {
       else {
         categories[editCategoryIndex].title = categoryTitle;
         setIsEditCategory(prevState => !prevState);
+        setEditCategoryIndex(null);
       }
     }
   }
@@ -92,10 +96,21 @@ const ModalOverlay = props => {
     setIsEditCategory(prevState => !prevState);
     setEditCategoryIndex(index);
   }
+  
+  const handleDeleteCategory = () => {
+    setIsEditCategory(prevState => !prevState);
+    setIsDeleteCategory(prevState => !prevState);
+  }
+
+  const confrimDeleteHandler = () => {
+    categories.splice(editCategoryIndex, 1);
+    setIsDeleteCategory(prevState => !prevState);
+    setEditCategoryIndex(null);
+  }
 
   return (
     <div className={classes.modal}>
-      {!isAddingCategory && !isEditCategory && (
+      {!isAddingCategory && !isEditCategory && !isDeleteCategory && (
         <CategorySelector
           closeModal={props.closeModal}
           isAddingCategory={setIsAddingCategory}
@@ -114,8 +129,18 @@ const ModalOverlay = props => {
         <EditCategory
           closeModal={props.closeModal}
           goBackHandler={() => setIsEditCategory(prevState => !prevState)}
-          categories={categories}
           editedCategory={handleEditCategory}
+          deletedCategory={handleDeleteCategory}
+        />
+      )}
+      {isDeleteCategory && (
+        <DeleteConfirmation
+          closeModal={props.closeModal}
+          goBackHandler={() => {
+            setIsDeleteCategory(prevState => !prevState);
+            setIsEditCategory(prevState => !prevState);
+          }}
+          confrimDelete={confrimDeleteHandler}
         />
       )}
     </div>
