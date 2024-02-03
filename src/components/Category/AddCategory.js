@@ -1,8 +1,8 @@
-import { faAngleLeft, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import IconBtn from '../UI/IconBtn';
 import classes from './AddCategory.module.css';
 import { useState } from "react";
-import AddButton from '../UI/AddButton';
+import WideIconButton from '../UI/WideIconButton';
 
 const AddCategory = ({ goBackHandler , newCategoryHandler, closeModal  }) => {
   const [enteredCategory, setEnteredCategory] = useState('');
@@ -30,7 +30,7 @@ const AddCategory = ({ goBackHandler , newCategoryHandler, closeModal  }) => {
             <span>{enteredCategory.length}/20</span>
           </div>
           <div className={classes['add-category__control']}>
-            <AddButton onClick={addCategoryHandler} text="افزودن" disabled={!enteredCategory} />
+            <WideIconButton type="submit" icon={faPlus} onClick={addCategoryHandler} text="افزودن" disabled={!enteredCategory} />
           </div>
         </form>
       </div>

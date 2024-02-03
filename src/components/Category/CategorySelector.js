@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import classes from './CategorySelector.module.css';
 import IconBtn from '../UI/IconBtn';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import CategorySearch from './CategorySearch';
 import CategoryList from './CategoryList';
-import AddButton from '../UI/AddButton';
+import WideIconButton from '../UI/WideIconButton';
 
 const CategorySelector = ({ categories, isAddingCategory, closeModal, editbtnClicked }) => {
   const [searchedCategories, setSearchedCategories] = useState(categories);
@@ -34,7 +34,7 @@ const CategorySelector = ({ categories, isAddingCategory, closeModal, editbtnCli
         <CategorySearch onSearch={handleSearch} />
         <p className={classes['category-selector__lable']}>دسته بندی ها</p>
         <CategoryList categories={searchedCategories} editbtnClicked={editBtnHandler} />
-        <AddButton onClick={isAddingCategoryHandler} text="افزودن دسته بندی دلخواه" />
+        <WideIconButton icon={faPlus} onClick={isAddingCategoryHandler} text="افزودن دسته بندی دلخواه" />
       </div>
     </div>
   );

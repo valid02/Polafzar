@@ -40,3 +40,12 @@
   outline: none;
   border: 2px solid #1b8dda;
 }
+
+.edit-category__delete-btn {
+  background-color: #C9372C;
+  color: #f3f3f3;
+}
+
+.edit-category__delete-btn:hover {
+  background-color: #AE2E24;
+}
